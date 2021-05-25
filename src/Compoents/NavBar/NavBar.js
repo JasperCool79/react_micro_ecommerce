@@ -15,7 +15,7 @@ import {
 import InputBase from '@material-ui/core/InputBase';
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Logo from '../../assets/images/icons/newlogo.png';
   import React, { useState, useEffect } from "react";
   
@@ -147,7 +147,7 @@ import Logo from '../../assets/images/icons/newlogo.png';
                   <Grid>
                     <IconButton aria-label="show 11 new notifications" color="inherit">
                         <Badge badgeContent={11} color="secondary">
-                            <NotificationsIcon />
+                            <ShoppingCartIcon />
                         </Badge>
                     </IconButton>
                   </Grid>
@@ -189,8 +189,8 @@ import Logo from '../../assets/images/icons/newlogo.png';
                   <Grid item><div style={{paddingTop: 8}}>{femmecubatorLogo}</div></Grid>
                   <Grid>
                     <IconButton aria-label="show 11 new notifications" color="inherit">
-                        <Badge badgeContent={50} color="secondary">
-                            <NotificationsIcon />
+                        <Badge badgeContent={11} color="secondary">
+                            <ShoppingCartIcon />
                         </Badge>
                     </IconButton>
                   </Grid>
