@@ -45,8 +45,7 @@ const productCategory = [
 function ProductCategory(props) {
     return (
         <Grid container justify="center">
-            {/* <Typography variant="h1" component="h1">Product Categories</Typography> */}
-            <h1>Product Categories</h1>
+            <Typography variant="h1" component="h1">Product Categories</Typography>
             <Grid item xs={12}>
                 <Container maxWidth="lg">
                     <Grid container justify="center" spacing={1} style={{padding: 20}}>

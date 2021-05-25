@@ -2,6 +2,9 @@ import AppBar from './AppBar/AppBar';
 import NavBar from './NavBar/NavBar';
 import BannerCarousel from './ProductCarousel/ProductCarousel';
 import ProductCategory from './ProductCategory/ProductCategory';
+import SelectionProductList from './SelectionProductList/SelectionProductList';
+import Testimonial from './Testimonial/Testimonial';
+import Footer from './Footer/Footer'
 
 function App() {
   return (
@@ -12,12 +15,12 @@ function App() {
         </header>
       <main>
         <BannerCarousel />
-        <ProductCategory/>
-         <hr />
-         <hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/>
+        <ProductCategory />
+        <SelectionProductList />
+        <Testimonial/>
         </main>
         <footer>
-          Footer
+          <Footer/>
         </footer>
     </>
   );

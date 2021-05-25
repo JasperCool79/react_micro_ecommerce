@@ -7,7 +7,6 @@ import { Button } from '@material-ui/core';
 
 export default function ProductCarousel() {
     const onClickItem = () => {
-        console.log('hello')
     }
     return (
         <Carousel infiniteLoop={true} showThumbs={false} autoPlay={true} showArrows={true} onClickItem={onClickItem}>

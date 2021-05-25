@@ -1,16 +1,13 @@
 import {
     AppBar,
     Toolbar,
-    Typography,
     makeStyles,
     Button,
     IconButton,
     Drawer,
-    Link,
     MenuItem,
     Grid,
     Badge,
-    Avatar
 } from "@material-ui/core";
 import InputBase from '@material-ui/core/InputBase';
 import MenuIcon from "@material-ui/icons/Menu";
