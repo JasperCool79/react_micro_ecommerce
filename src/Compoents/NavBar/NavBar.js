@@ -14,7 +14,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Logo from '../../assets/images/icons/newlogo.png';
-  import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import CategoryDropdown from './CategoryDropdown';
   
   const headersData = [
     {
@@ -125,7 +126,13 @@ import Logo from '../../assets/images/icons/newlogo.png';
               
               <Grid container justify="space-between">
                   <Grid item>{femmecubatorLogo}</Grid>
-                  <Grid item><div style={{paddingTop: 10}}>{getMenuButtons()}</div></Grid>
+                  <Grid item><CategoryDropdown/></Grid>
+                  <Grid item>
+                    
+                    <div style={{ paddingTop: 10 }}>
+                      {getMenuButtons()}
+                    </div>
+                  </Grid>
                   <Grid item>
                     <div className={search}>
                         <div className={searchIcon}>
@@ -183,14 +190,21 @@ import Logo from '../../assets/images/icons/newlogo.png';
             <div className={drawerContainer}>{getDrawerChoices()}</div>
               </Drawer>
               <Grid container justify="space-between">
-                  <Grid item><div style={{paddingTop: 8}}>{femmecubatorLogo}</div></Grid>
-                  <Grid>
-                    <IconButton aria-label="show 11 new notifications" color="inherit">
-                        <Badge badgeContent={11} color="secondary">
-                            <ShoppingCartIcon />
-                        </Badge>
-                    </IconButton>
-                  </Grid>
+                <Grid item>
+                  <div style={{ paddingTop: 8 }}>
+                    {femmecubatorLogo}
+                  </div>
+                </Grid>
+                <Grid item>
+                  <CategoryDropdown />
+                </Grid>
+                <Grid>
+                  <IconButton aria-label="show 11 new notifications" color="inherit">
+                      <Badge badgeContent={11} color="secondary">
+                          <ShoppingCartIcon />
+                      </Badge>
+                  </IconButton>
+                </Grid>
               </Grid>
         </Toolbar>
       );
@@ -217,6 +231,8 @@ import Logo from '../../assets/images/icons/newlogo.png';
     const getMenuButtons = () => {
       return headersData.map(({ label, href }) => {
         return (
+          <>
+          
           <Button
             {...{
               key: label,
@@ -226,7 +242,7 @@ import Logo from '../../assets/images/icons/newlogo.png';
             }}
           >
             {label}
-          </Button>
+          </Button></>
         );
       });
     };

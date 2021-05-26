@@ -10,14 +10,14 @@ function App() {
   return (
     <>
         <header style={{paddingTop: '10px'}}>
-        <AppBar />
-        <NavBar/>
+          <AppBar />
+          <NavBar/>
         </header>
-      <main>
-        <BannerCarousel />
-        <ProductCategory />
-        <SelectionProductList />
-        <Testimonial/>
+        <main>
+          <BannerCarousel />
+          <ProductCategory />
+          <SelectionProductList />
+          <Testimonial/>
         </main>
         <footer>
           <Footer/>
