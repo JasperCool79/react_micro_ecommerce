@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 import {Grid,Typography} from '@material-ui/core'
 
 export default function Help() {
@@ -20,34 +20,30 @@ export default function Help() {
                 alignItems="flex-start"
             >
                 <Typography
-                    variant="p"
+                    variant="subtitle2"
                     gutterBottom
-                    component="p"
-                    style={{ color: 'blue', fontSize: 12, paddingTop: 7, paddingBottom: 7 }}
+                    style={{ color: 'blue', paddingTop: 3, paddingBottom: 3 }}
                 >
                     FAQs
                 </Typography>
                 <Typography
-                    variant="p"
+                    variant="subtitle2"
                     gutterBottom
-                    component="p"
-                    style={{ color: 'blue', fontSize: 12, paddingTop: 7, paddingBottom: 7 }}
+                    style={{ color: 'blue', paddingTop: 3, paddingBottom: 3 }}
                 >
                     Track Order
                 </Typography>
                 <Typography
-                    variant="p"
+                    variant="subtitle2"
                     gutterBottom
-                    component="p"
-                    style={{ color: 'blue', fontSize: 12, paddingTop: 7, paddingBottom: 7 }}
+                    style={{ color: 'blue', paddingTop: 3, paddingBottom: 3 }}
                 >
                     Find Product Code
                 </Typography>
                 <Typography
-                    variant="p"
+                    variant="subtitle2"
                     gutterBottom
-                    component="p"
-                    style={{ color: 'blue', fontSize: 12, paddingTop: 7, paddingBottom: 7 }}
+                    style={{ color: 'blue', paddingTop: 3, paddingBottom: 3 }}
                 >
                     Return Policy
                 </Typography>

@@ -1,12 +1,21 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import IconButton from '@material-ui/core/IconButton';
 import PhoneIcon from '@material-ui/icons/Phone';
 import EmailIcon from '@material-ui/icons/Email';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import ChatIcon from '@material-ui/icons/Chat';
 import Typography from '@material-ui/core/Typography';
+import axios from 'axios';
+import { URL } from '../api';
 
-export default function ContactInfo({contactInfo}) {
+export default function ContactInfo() {
+    const [contactInfo, setContactInfo] = useState({});
+    useEffect(() => {
+        axios.get(`${URL}/contact_info`).then(res => {
+            let info = res.data.data;
+            setContactInfo(info);
+        }).catch(err => console.log(err));
+    }, [])
     return (
         <>
             {
@@ -32,22 +41,22 @@ export default function ContactInfo({contactInfo}) {
             }
             {
                 /* Facebook Page Name */
-                contactInfo.facebook && <a href="https://facebook.com" style={{textDecoration: 'none'}}>
+                contactInfo.facebook_name && <a href="https://facebook.com" style={{textDecoration: 'none'}}>
                 <IconButton size='small' color="primary" aria-label="Phone" style={{background: 'none'}}>
                     <FacebookIcon fontSize='small'/>
                     <Typography>
-                        &nbsp; {contactInfo.facebook}
+                            &nbsp; {contactInfo.facebook_name}
                     </Typography>
                 </IconButton>
                 </a>
             }
             {
                 // Messenger ID
-                contactInfo.messenger && <a href="https://facebook.com" style={{textDecoration: 'none'}}>
+                contactInfo.messenger_name && <a href="https://facebook.com" style={{textDecoration: 'none'}}>
                 <IconButton size='small' color="primary" aria-label="Phone" style={{background: 'none'}}>
                     <ChatIcon fontSize='small'/>
                     <Typography>
-                        &nbsp; {contactInfo.messenger}
+                        &nbsp; {contactInfo.messenger_name}
                     </Typography>
                 </IconButton>
                 </a>

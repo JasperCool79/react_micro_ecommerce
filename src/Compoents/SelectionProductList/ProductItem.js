@@ -36,35 +36,37 @@ export default function ProductItem({price,text,img}) {
     return (
     <Box width={270}>
         <Card className={classes.root}>
-                <CardActionArea>
-                    <span className={classes.productPrice}>MMK { price }</span>
-                <CardMedia
-                component="img"
-                alt="Contemplative Reptile"
-                height="140"
-                image={img}
-                title="Contemplative Reptile"
-                />
-                <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    {text}
-                </Typography>
-                </CardContent>
-            </CardActionArea>
-            <CardActions>
+          <CardActionArea>
+            <span className={classes.productPrice}>
+              MMK {new Intl.NumberFormat('en-IN').format(price)}
+            </span>
+            <CardMedia
+              component="img"
+              alt="Contemplative Reptile"
+              height="140"
+              image={img}
+              title="Contemplative Reptile"
+            />
+            <CardContent>
+              <Typography variant="body2" color="textSecondary" component="p">
+                  {text}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
             <Grid container justify="space-between">              
-                <Grid item>
-                  <Button variant="contained" color="primary" startIcon={<PageviewIcon/>}>
-                    View
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="contained" color="primary" startIcon={<AddShoppingCartIcon />}>
-                    Add
-                  </Button>
-                </Grid>
+              <Grid item>
+                <Button variant="contained" color="primary" startIcon={<PageviewIcon/>}>
+                  View
+                </Button>
               </Grid>
-            </CardActions>
+              <Grid item>
+                <Button variant="contained" color="primary" startIcon={<AddShoppingCartIcon />}>
+                  Add
+                </Button>
+              </Grid>
+            </Grid>
+          </CardActions>
         </Card>
     </Box>
   );

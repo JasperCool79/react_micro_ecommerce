@@ -1,8 +1,5 @@
-import React,{useState} from 'react'
-import { Grid, Typography, IconButton, Button,InputBase } from '@material-ui/core'
-import FacebookIcon from '@material-ui/icons/Facebook';
-import PinterestIcon from '@material-ui/icons/Pinterest';
-import InstagramIcon from '@material-ui/icons/Instagram';
+import React from 'react'
+import { Grid, Typography, Button,InputBase } from '@material-ui/core'
 
 export default function GetInTouch() {
     return (

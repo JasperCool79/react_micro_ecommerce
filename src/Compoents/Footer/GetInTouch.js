@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 import { Grid, Typography,IconButton } from '@material-ui/core'
 import FacebookIcon from '@material-ui/icons/Facebook';
 import PinterestIcon from '@material-ui/icons/Pinterest';
@@ -23,9 +23,8 @@ export default function GetInTouch() {
                 alignItems="flex-start"
             >
                 <Typography
-                    variant="p"
+                    variant="body1"
                     gutterBottom
-                    component="p"
                     style={{ color: 'blue', fontSize: 12, paddingTop: 10, paddingBottom: 10 }}
                 >
                     Any questions? Let us know us at
@@ -35,7 +34,7 @@ export default function GetInTouch() {
                 <Grid
                     direction="row"
                     container
-                    justify="start"
+                    justify="flex-start"
                     spacing={1}
                     alignItems="flex-start"
                 >

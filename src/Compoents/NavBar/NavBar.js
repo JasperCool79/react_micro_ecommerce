@@ -19,21 +19,30 @@ import CategoryDropdown from './CategoryDropdown';
   
   const headersData = [
     {
-      label: "Listings",
-      href: "/listings",
+      id: 1,
+      label: "Home",
+      href: "/",
     },
     {
-      label: "Mentors",
-      href: "/mentors",
+      id: 2,
+      label: "About",
+      href: "/about",
     },
     {
-      label: "My Account",
-      href: "/account",
+      id: 3,
+      label: "Contact",
+      href: "/contact",
     },
     {
-      label: "Log Out",
-      href: "/logout",
+      id: 4,
+      label: "Blog",
+      href: "/blog",
     },
+    {
+      id: 5,
+      label: "Send Proof",
+      href: "/send-proof",
+    }
   ];
   
   const useStyles = makeStyles(() => ({
@@ -55,7 +64,7 @@ import CategoryDropdown from './CategoryDropdown';
       fontFamily: "Open Sans, sans-serif",
       fontWeight: 700,
       size: "18px",
-      marginLeft: "38px",
+      marginLeft: "18px",
     },
     toolbar: {
       display: "flex",
@@ -89,7 +98,6 @@ import CategoryDropdown from './CategoryDropdown';
       },
       inputInput: {
         padding: 1,
-        // vertical padding + font size from searchIcon
         paddingLeft: 25,
         paddingTop: 2,
         width: '100%',
@@ -97,7 +105,7 @@ import CategoryDropdown from './CategoryDropdown';
 
   }));
   
-  export default function Header() {
+  export default function NavBar() {
     const { header, logo, menuButton, toolbar, drawerContainer,search, searchIcon,inputInput,inputRoot } = useStyles();
   
     const [state, setState] = useState({
@@ -125,15 +133,15 @@ import CategoryDropdown from './CategoryDropdown';
           
               
               <Grid container justify="space-between">
-                  <Grid item>{femmecubatorLogo}</Grid>
-                  <Grid item><CategoryDropdown/></Grid>
-                  <Grid item>
+                  <Grid item key={1}>{femmecubatorLogo}</Grid>
+                  <Grid item key={2}><CategoryDropdown/></Grid>
+                  <Grid item key={3}>
                     
                     <div style={{ paddingTop: 10 }}>
                       {getMenuButtons()}
                     </div>
                   </Grid>
-                  <Grid item>
+                  <Grid item key={4}>
                     <div className={search}>
                         <div className={searchIcon}>
                         <SearchIcon />
@@ -148,7 +156,7 @@ import CategoryDropdown from './CategoryDropdown';
                         />
                     </div>
                   </Grid>
-                  <Grid>
+                  <Grid item key={5}>
                     <IconButton aria-label="show 11 new notifications" color="inherit">
                         <Badge badgeContent={11} color="secondary">
                             <ShoppingCartIcon />
@@ -211,38 +219,35 @@ import CategoryDropdown from './CategoryDropdown';
     };
   
     const getDrawerChoices = () => {
-      return headersData.map(({ label, href }) => {
+      return headersData.map(({ id,label, href }) => {
         return (
           
-            <MenuItem>{label}</MenuItem>
+            <MenuItem key={id}>{label}</MenuItem>
         );
       });
     };
   
       const femmecubatorLogo = (
           <Button>
-              <img src={Logo} style={{maxWidth: 70,maxHeight: 40,color: 'white',padding: 2}}/>
+              <img src={Logo} alt="logo_image" className={logo} style={{maxWidth: 70,maxHeight: 40,color: 'white',padding: 2}}/>
           </Button>
-    //     <Typography variant="h6" component="h1" className={logo}>
-    //     MyShop
-    //   </Typography>
     );
   
     const getMenuButtons = () => {
-      return headersData.map(({ label, href }) => {
+      return headersData.map(({ id,label, href}) => {
         return (
-          <>
+          
           
           <Button
             {...{
-              key: label,
               color: "inherit",
               to: href,
               className: menuButton,
             }}
+            key={id}
           >
             {label}
-          </Button></>
+          </Button>
         );
       });
     };

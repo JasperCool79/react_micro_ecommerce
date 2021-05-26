@@ -3,6 +3,8 @@ import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import { MenuItem, makeStyles } from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import axios from 'axios';
+import { URL } from '../api';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -20,12 +22,19 @@ const useStyles = makeStyles(() => ({
 function CategoryDropdown() {
   const { menuButton,root} = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [categories, setCategories] = React.useState([]);
 
   function handleClick(event) {
     if (anchorEl !== event.currentTarget) {
       setAnchorEl(event.currentTarget);
     }
   }
+  React.useEffect(() => {
+    axios.get(`${URL}/get_categories`).then(({ data }) => {
+      let category_data = data.data;
+      setCategories(category_data);
+    })
+  },[])
 
   function handleClose() {
     setAnchorEl(null);
@@ -41,7 +50,7 @@ function CategoryDropdown() {
         color="inherit"
         className={menuButton}
       >
-        Open Menu
+        Products
         <ExpandMoreIcon/>
       </Button>
       <Menu
@@ -51,9 +60,10 @@ function CategoryDropdown() {
         onClose={handleClose}
         MenuListProps={{ onMouseLeave: handleClose }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        {
+          categories.map(({ id, name }) => <MenuItem key={id} onClick={handleClose}>{name}</MenuItem>)
+        }
+        
       </Menu>
     </div>
   );
