@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactPaginate from 'react-paginate'
 import {Grid, Typography, Container} from '@material-ui/core'
 import './SelectionProductList.css'
-import ProductItem from './ProductItem'
+import SingleProduct from '../SingleProduct/SingleProduct'
 import { URL } from '../api';
 import axios from 'axios';
 
@@ -22,8 +22,8 @@ export default class SelectionProductList extends Component {
     receivedData() {
       const data = this.state.intialProduct;
         const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
-        const postData = slice.map(({ id, title, product_img,product_img_url, price }) => <Grid key={id} item md={3}>
-            <ProductItem text={title} img={`${product_img_url}${product_img[0]}`} price={price} />
+        const postData = slice.map(({ id, title,description, product_img,product_img_url, price,options }) => <Grid key={id} item md={3}>
+            <SingleProduct description={description} options={options} title={title} img={`${product_img_url}${product_img[0]}`} price={price} />
         </Grid>);
 
         this.setState({

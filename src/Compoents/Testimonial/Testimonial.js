@@ -38,8 +38,8 @@ export default class Testimonial extends Component {
                     className={myclasses}
                 >                        
                     {
-                        this.state.reviews.map(({id,name,job,company,photo,review_message})=> <div>
-                            <img src={photo} />
+                        this.state.reviews.map(({id,name,job,company,photo,review_message})=> <div key={id}>
+                            <img src={photo} alt={name}/>
                             <div className="myCarousel">
                                 <h3>{name}</h3>
                                 <h4>{`${job} @ ${company}`}</h4>

@@ -30,9 +30,15 @@ const useStyles = makeStyles({
   }
 });
 
-export default function ProductItem({price,text,img}) {
+export default function ProductItem({price,text,img,options}) {
   const classes = useStyles();
-
+  const opt = { ...options };
+  let arr = [];
+  for (var key in opt) {
+    if (opt[key] !== null) {
+      arr[key] = opt[key];
+    }
+  }
     return (
     <Box width={270}>
         <Card className={classes.root}>
