@@ -4,6 +4,7 @@ import { Carousel } from 'react-responsive-carousel';
 import { Button } from '@material-ui/core';
 import { URL } from '../api';
 import axios from 'axios';
+import {Link} from 'react-router-dom'
 
 export default function ProductCarousel() {
     const [categories, setCategories] = useState([]);
@@ -22,7 +23,7 @@ export default function ProductCarousel() {
                     <img src={banner_img} style={{ maxHeight: 600 }} alt={title}/>
                     <p className="title">{title}</p>
                     <p className="subtitle">{subtitle}</p>
-                    <Button className="legend">Shop Now</Button>
+                    <Button className="legend" component={Link} to={`category/${id}`}>Shop Now</Button>
                 </div>)
             }
         </Carousel>

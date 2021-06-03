@@ -13,6 +13,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import { useForm, Controller } from 'react-hook-form';
+import { URL } from '../../api';
+import axios from 'axios';
+import {useHistory} from 'react-router-dom'
 
 
 
@@ -39,10 +42,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
     const classes = useStyles();
+    const history = useHistory();
     const [agree, setAgree] = useState(false);
     const { handleSubmit, control} = useForm();
     const onRegister = data => {
-        console.log(data);
+      let user = {
+        'name': data.userName,
+        'email': data.email,
+        'password': data.password,
+        'confirm_password': data.confirm_password,
+      };
+      axios.post(`${URL}/signup`, user).then(res => {
+        history.push('/');
+      }).catch(err => console.log(err))
     }
   return (
     <Container component="main" maxWidth="xs" >

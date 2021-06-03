@@ -19,7 +19,7 @@ function ProductCategory(props) {
                     <Grid container justify="center" spacing={1} style={{padding: 20}}>
                         {
                             categories.map(({id,sub_banner_img,title,name}) => <Grid item md={3} key={id}>
-                                <ProductCategoryItem categoryName={name} categoryTitle={title} categoryImage={sub_banner_img} />
+                                <ProductCategoryItem id={id} categoryName={name} categoryTitle={title} categoryImage={sub_banner_img} />
                             </Grid>)
                         }
                     </Grid>

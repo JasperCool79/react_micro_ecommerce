@@ -5,7 +5,9 @@ import './CategoryProductPage.css'
 import SingleProduct from '../../SingleProduct/SingleProduct'
 import { URL } from '../../api';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 export default class CategoryProductPage extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -14,11 +16,11 @@ export default class CategoryProductPage extends Component {
         postData: null,
         perPage: 12,
         currentPage: 0,
-        pageCount: 0
+        pageCount: 0,
     };
   }
     receivedData() {
-      const data = this.state.intialProduct;
+        const data = this.state.intialProduct;
         const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
         const postData = slice.map(({ id, title,description, product_img,product_img_url, price,options }) => <Grid key={id} item xs={12} sm={6} md={3}>
             <SingleProduct description={description} options={options} title={title} img={`${product_img_url}${product_img[0]}`} price={price} />
@@ -39,20 +41,21 @@ export default class CategoryProductPage extends Component {
             this.receivedData();
         })
     }
-    componentDidMount() {
+  componentDidMount() {
+    const id = this.props.match.params.id;
+    console.log(id);
         axios.get(`${URL}/get_products_category_id/`, {
             params: {
-                category_id: this.props.category_id
+                category_id: id
           }
       }).then(({data}) => {
         const res = data.data;
-        console.log(res)
         this.setState({ intialProduct: res,pageCount: res.length}, () => {
           this.receivedData();
         });
     }).catch(err=> console.log(err))
-    }
-    render() {
+  }
+  render() {
       return (
         <Grid container justify="center" style={{paddingTop: 20}}>
           <Typography variant="h3" component="h3" style={{ textTransform: 'uppercase', fontStyle: 'bold' }}>{this.props.category_name}</Typography>

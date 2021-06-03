@@ -14,8 +14,10 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Logo from '../../assets/images/icons/newlogo.png';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext} from "react";
 import CategoryDropdown from './CategoryDropdown';
+import { Link } from "react-router-dom";
+import CartContext from '../../CartContex';
   
   const headersData = [
     {
@@ -32,11 +34,6 @@ import CategoryDropdown from './CategoryDropdown';
       id: 3,
       label: "Contact",
       href: "/contact",
-    },
-    {
-      id: 4,
-      label: "Blog",
-      href: "/blog",
     },
     {
       id: 5,
@@ -105,7 +102,9 @@ import CategoryDropdown from './CategoryDropdown';
 
   }));
   
-  export default function NavBar() {
+export default function NavBar() {
+  const { cart } = useContext(CartContext);
+  let daa = cart !== '' && JSON.parse(cart);
     const { header, logo, menuButton, toolbar, drawerContainer,search, searchIcon,inputInput,inputRoot } = useStyles();
   
     const [state, setState] = useState({
@@ -157,8 +156,8 @@ import CategoryDropdown from './CategoryDropdown';
                     </div>
                   </Grid>
                   <Grid item key={5}>
-                    <IconButton aria-label="show 11 new notifications" color="inherit">
-                        <Badge badgeContent={11} color="secondary">
+                  <IconButton component={Link} to="/cart" aria-label="show 11 new notifications" color="inherit">
+                        <Badge badgeContent={daa ? Object.keys(daa).length : 0} color="secondary">
                             <ShoppingCartIcon />
                         </Badge>
                     </IconButton>
@@ -206,12 +205,12 @@ import CategoryDropdown from './CategoryDropdown';
                 <Grid item>
                   <CategoryDropdown />
                 </Grid>
-                <Grid>
+                <Grid><Link to="/cart">
                   <IconButton aria-label="show 11 new notifications" color="inherit">
-                      <Badge badgeContent={11} color="secondary">
-                          <ShoppingCartIcon />
+                      <Badge badgeContent={daa ? Object.keys(daa).length : 0} color="secondary">
+                      <ShoppingCartIcon />
                       </Badge>
-                  </IconButton>
+                  </IconButton></Link>
                 </Grid>
               </Grid>
         </Toolbar>
@@ -222,7 +221,9 @@ import CategoryDropdown from './CategoryDropdown';
       return headersData.map(({ id,label, href }) => {
         return (
           
-            <MenuItem key={id}>{label}</MenuItem>
+            <MenuItem key={id} component={Link}
+            to={href}
+          >{label}</MenuItem>
         );
       });
     };
@@ -236,18 +237,19 @@ import CategoryDropdown from './CategoryDropdown';
     const getMenuButtons = () => {
       return headersData.map(({ id,label, href}) => {
         return (
-          
-          
-          <Button
-            {...{
-              color: "inherit",
-              to: href,
-              className: menuButton,
+            <Button
+              {...{
+                color: "inherit",
+                className: menuButton,
+                
             }}
+            component={Link}
+            to={href}
             key={id}
           >
             {label}
-          </Button>
+            </Button>
+          
         );
       });
     };

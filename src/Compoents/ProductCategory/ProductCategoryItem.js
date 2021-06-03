@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles({
   root: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ProductCategoryItem({categoryName, categoryTitle, categoryImage}) {
+export default function ProductCategoryItem({id,categoryName, categoryTitle, categoryImage}) {
   const classes = useStyles();
 
   return (
@@ -38,7 +39,7 @@ export default function ProductCategoryItem({categoryName, categoryTitle, catego
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button  variant="outlined" size="small" color="primary">
+        <Button component={Link} to={`category/${id}`}  variant="outlined" size="small" color="primary">
           Shop Now
         </Button>
       </CardActions>

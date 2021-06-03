@@ -21,9 +21,9 @@ export default class SelectionProductList extends Component {
   }
     receivedData() {
       const data = this.state.intialProduct;
-        const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
+      const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage);
         const postData = slice.map(({ id, title,description, product_img,product_img_url, price,options }) => <Grid key={id} item md={3}>
-            <SingleProduct description={description} options={options} title={title} img={`${product_img_url}${product_img[0]}`} price={price} />
+            <SingleProduct id={id} description={description} options={options} title={title}  img={`${product_img_url}${product_img[0]}`} price={price} />
         </Grid>);
 
         this.setState({

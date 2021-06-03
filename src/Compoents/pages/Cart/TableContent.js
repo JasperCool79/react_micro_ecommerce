@@ -1,6 +1,6 @@
-import React,{useState} from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { IconButton, TableRow,TableCell, Typography} from '@material-ui/core';
+import { IconButton, TableRow,TableCell} from '@material-ui/core';
 import { Add, Delete, Remove } from '@material-ui/icons';
 
 const useStyles = makeStyles({
@@ -8,7 +8,7 @@ const useStyles = makeStyles({
         width: 50,
         height: 60,
     }
-  });
+});
 
 export default function TableContent({ id, name, price, image,quantity, inputHandler, reduceBinder, incrementBinder, deleteBinder }) {
     const classes = useStyles();

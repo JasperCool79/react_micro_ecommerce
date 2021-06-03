@@ -5,6 +5,8 @@ import { MenuItem, makeStyles } from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import axios from 'axios';
 import { URL } from '../api';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -45,7 +47,6 @@ function CategoryDropdown() {
       <Button
         aria-owns={anchorEl ? "simple-menu" : undefined}
         aria-haspopup="true"
-        onClick={handleClick}
         onMouseOver={handleClick}
         color="inherit"
         className={menuButton}
@@ -61,7 +62,7 @@ function CategoryDropdown() {
         MenuListProps={{ onMouseLeave: handleClose }}
       >
         {
-          categories.map(({ id, name }) => <MenuItem key={id} onClick={handleClose}>{name}</MenuItem>)
+          categories.map(({ id, name }) => <MenuItem key={id} component={Link} to={`/category/${id}`}>{name}</MenuItem>)
         }
         
       </Menu>

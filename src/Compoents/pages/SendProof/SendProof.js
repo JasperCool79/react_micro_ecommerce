@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
@@ -9,7 +9,10 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import Email from '@material-ui/icons/Email';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import {FormatListNumbered, Phone, PinDrop, Receipt } from '@material-ui/icons';
+import { FormatListNumbered, Phone, Receipt } from '@material-ui/icons';
+import { URL } from '../../api';
+import axios from 'axios'
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -52,10 +55,33 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function SendProof() {
+    let history = useHistory();
     const classes = useStyles();
     const { handleSubmit, control } = useForm();
+    const [file, setFile] = useState(null);
+    const fileSelectedHandler = event => {
+        setFile(event.target.files[0]);
+        console.log(event.target.files[0])
+      }
     const onSendMessage = data => {
-        console.log(data);
+        const formData = new FormData();
+        formData.append("img", file,file.name);
+        formData.append("order_id",data.orderId);
+        formData.append("name",data.name);
+        formData.append("phone",data.phoneNumber);
+        formData.append("message", data.message);
+        axios.post(`${URL}/send_proof`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then(res => {
+            console.log(res)
+            if (res.data.code) {
+                if (res.data.code === 200) {
+                    history.push('/');
+                }
+            }
+        }).catch(err => console.log(err));
     }
     return (
     <Grid container style={{paddingBottom: 10}}>
@@ -193,44 +219,25 @@ export default function SendProof() {
                                                 />
                                             </Grid>
                                             <Grid item xs={12}>
-                                                <Controller
-                                                    name="photo"
-                                                    control={control}
-                                                    defaultValue=""
-                                                    render={({field: {onChange,value},fieldState: {error}})=>(<Grid container justify="center" alignItems="flex-end">
-                                                    <Grid item xs={12}>
+                                                
                                                         <div>
                                                             <input
                                                                 accept="image/*"
                                                                 style={{display: 'none'}}
                                                                 id="contained-button-file"
-                                                                multiple
                                                                 type="file"
-                                                                value={value}
-                                                                onChange={onChange}
-                                                                error={!!error}
+                                                                onChange={fileSelectedHandler}
                                                             />
-                                                            <label htmlFor="contained-button-file"
-                                                                    
-                                                                    
-                                                                >
-                                                                    <Button fullWidth variant="contained"
+                                                            <label htmlFor="contained-button-file">
+                                                                <Button fullWidth variant="contained"
                                                                     component="span"
                                                                     style={{background: '#8e24aa',color: 'white'}}
-                                                                    
-                                                                    >
-                                                                        Add ScreenShoot Photo
+                                                                >
+                                                                    Add ScreenShoot Photo
                                                                 </Button>
-                                                                {error ? <span style={{color: 'red'}}>{error.message}</span> : null}
+                                                                {file === null ? <span style={{color: 'red'}}>{'Payment ScreenShoot is Required'}</span> : null}
                                                             </label>
                                                         </div>
-                                                    </Grid>
-                                                    </Grid>
-                                                    )}
-                                                    rules={{
-                                                        required: 'Photo is Required !'
-                                                    }}
-                                                />
                                             </Grid>
                                             <Grid item xs={12}>
                                                 <Controller
@@ -275,6 +282,7 @@ export default function SendProof() {
                 </Grid>
             </Container>
         </Grid>
-    </Grid>    
+    
+        </Grid>
   );
 }

@@ -5,8 +5,10 @@ import { URL } from '../api';
 import axios from 'axios';
 import Size from '../SingleProduct/Size';
 import ColorChoise from '../SingleProduct/Color';
+import { useParams } from 'react-router';
 
 export default function SingleProductDetail(props) {
+    const { product_id } = useParams();
     const [index, setIndex] = useState(0);
     const [product, setProduct] = useState([]);
     const myRef = useRef();
@@ -37,7 +39,7 @@ export default function SingleProductDetail(props) {
         setColor(newColor);
     }
     useEffect(() => {
-        const { product_id } = props;
+        // const { product_id } = props;
         axios.get(`${URL}/get_product_id`, {
             params: {
                 product_id
@@ -46,7 +48,7 @@ export default function SingleProductDetail(props) {
             const res = data.data;
             setProduct(res)
         }).catch(err=> console.log(err))        
-    }, [props.product_id])
+    }, [product_id])
     const handleTab = index => {
         setIndex(index)
         const images = myRef.current.children;
