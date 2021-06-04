@@ -50,7 +50,10 @@ export default function CategoryProduct() {
     }
     async function fetchData() {
         let response = await axios.get(`${URL}/get_products_category_id/`,{
-            
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+              },
             params: {
                 category_id: id
             }
