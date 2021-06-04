@@ -20,12 +20,21 @@ import CategoryProductPage from '../Compoents/pages/CategoryProductPage/Category
 import CategoryProduct from '../Compoents/pages/CategoryProductPage/CategoryProduct'
 import Cart from '../Compoents/pages/Cart/Cart'
 import CartContext from '../CartContex';
+import Swa from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const Swal = withReactContent(Swa)
 
 function reducer(state='', action) {
   switch (action.type) {
     case 'ADD':
       let { id, quantity, name, price, image } = action.payload;
-      let data = { [id]: { "quantity": quantity, "id": id, "price": price, "name": name, "image": image }};
+      let data = { [id]: { "quantity": quantity, "id": id, "price": price, "name": name, "image": image } };
+      Swal.fire(
+        'Success!',
+        'Product Add To Cart Successfully!',
+        'success'
+      );
       if (state !== '') {
         return JSON.stringify({ ...JSON.parse(state),...data })
       } else {
@@ -38,6 +47,11 @@ function reducer(state='', action) {
       let dd = {...JSON.parse(state)};
       dd[ID]['quantity'] = Quantity;
       console.log(dd[ID]['quantity']);
+      Swal.fire(
+        'Success!',
+        'Product Quantity Decrease Successfully!',
+        'info'
+      );
       return JSON.stringify(dd);
     case 'increase':
       let increase = action.payload;
@@ -46,10 +60,20 @@ function reducer(state='', action) {
       let mydd = {...JSON.parse(state)};
       mydd[Id]['quantity'] = Qty;
       console.log(mydd[Id]['quantity']);
+      Swal.fire(
+        'Success!',
+        'Product Quantity Increase Successfully!',
+        'success'
+      );
       return JSON.stringify(mydd);
     case 'delete':
       let myState = { ...JSON.parse(state) };
       delete myState[action.payload.id];
+      Swal.fire(
+        'Success!',
+        'Product Deleted Successfully!',
+        'error'
+      );
       return JSON.stringify(myState);
     default:
       throw new Error();

@@ -13,6 +13,10 @@ import { FormatListNumbered, Phone, Receipt } from '@material-ui/icons';
 import { URL } from '../../api';
 import axios from 'axios'
 import { useHistory } from 'react-router';
+import Swa from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const Swal = withReactContent(Swa);
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -78,6 +82,11 @@ export default function SendProof() {
             console.log(res)
             if (res.data.code) {
                 if (res.data.code === 200) {
+                    Swal.fire(
+                        'Success!',
+                        'Your Payment Proof Sent Successfully!',
+                        'success'
+                      );
                     history.push('/');
                 }
             }

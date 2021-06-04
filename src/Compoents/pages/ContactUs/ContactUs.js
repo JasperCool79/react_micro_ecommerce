@@ -12,6 +12,10 @@ import Typography from '@material-ui/core/Typography';
 import bgImage from '../../../assets/images/bg-02.png';
 import ForumIcon from '@material-ui/icons/Forum';
 import { Phone, PinDrop } from '@material-ui/icons';
+import Swa from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const Swal = withReactContent(Swa)
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -56,7 +60,11 @@ export default function ContactUs() {
     const classes = useStyles();
     const { handleSubmit, control } = useForm();
     const onSendMessage = data => {
-        console.log(data);
+        Swal.fire(
+            'Success!',
+            'Your Message receive ! Thank for your FeedBack',
+            'success'
+          );
     }
     return (
         <Grid container style={{paddingBottom: 10}}>

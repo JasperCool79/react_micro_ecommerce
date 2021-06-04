@@ -15,7 +15,11 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import { useForm, Controller } from 'react-hook-form';
 import { URL } from '../../api';
 import axios from 'axios';
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
+import Swa from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const Swal = withReactContent(Swa)
 
 
 
@@ -53,8 +57,17 @@ export default function SignUp() {
         'confirm_password': data.confirm_password,
       };
       axios.post(`${URL}/signup`, user).then(res => {
+        Swal.fire(
+          'Success!',
+          'Register Succeess! Now your are a member',
+          'success'
+        );
         history.push('/');
-      }).catch(err => console.log(err))
+      }).catch(err => Swal.fire(
+        'Error!',
+        'Something Wrong ! Please Check your email and password',
+        'error'
+      ))
     }
   return (
     <Container component="main" maxWidth="xs" >

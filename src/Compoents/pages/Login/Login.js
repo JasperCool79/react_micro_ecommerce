@@ -14,7 +14,10 @@ import { useForm, Controller } from 'react-hook-form';
 import { URL } from '../../api';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom'
+import Swa from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
+const Swal = withReactContent(Swa)
 
 
 const useStyles = makeStyles((theme) => ({
@@ -48,8 +51,17 @@ export default function Login() {
         'password': data.password,
       };
       axios.post(`${URL}/login`, user).then(res => {
+        Swal.fire(
+          'Success!',
+          'Login Succeess! Now your are a member',
+          'success'
+        );
         history.push('/');
-      }).catch(err => console.log(err))
+      }).catch(err => Swal.fire(
+        'Error!',
+        'Something Wrong ! Please Check your email and password',
+        'error'
+      ))
     }
   return (
     <Container component="main" maxWidth="xs" >

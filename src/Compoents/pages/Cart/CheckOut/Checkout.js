@@ -12,6 +12,10 @@ import Review from './Review';
 import CartContext from '../../../../CartContex'
 import {URL} from '../../../api';
 import axios from 'axios';
+import Swa from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const Swal = withReactContent(Swa);
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -89,6 +93,11 @@ export default function Checkout({checkoutData,total}) {
       orderId = data.data;
       
     }).catch(err => console.log(err))
+    Swal.fire(
+      'Success!',
+      'Product Quantity Increase Successfully!',
+      'success'
+    );
     handleNext();
     
   }
