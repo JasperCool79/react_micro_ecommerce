@@ -49,7 +49,8 @@ export default function CategoryProduct() {
         receivedData();
     }
     async function fetchData() {
-        let response = await axios.get(`${URL}/get_products_category_id/`,{
+        let response = await axios.get(`${URL}/get_products_category_id/`, {
+            mode: 'cors',
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',
