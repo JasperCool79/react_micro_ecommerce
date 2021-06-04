@@ -6,6 +6,9 @@ import SingleProduct from '../../SingleProduct/SingleProduct'
 import { URL } from '../../api';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+var config = {
+    headers: {'Access-Control-Allow-Origin': '*'}
+};
 export default function CategoryProduct() {
     const { id } = useParams();
     const [category, setCategory] = useState({
@@ -46,12 +49,12 @@ export default function CategoryProduct() {
         receivedData();
     }
     async function fetchData() {
-        let response = await axios.get(`${URL}/get_products_category_id/`, { crossdomain: true },{
+        let response = await axios.get(`${URL}/get_products_category_id/`,{
             
             params: {
                 category_id: id
             }
-        });
+        },config);
         const res = await response.data.data;
         return {"response": response, "data": res};
             
