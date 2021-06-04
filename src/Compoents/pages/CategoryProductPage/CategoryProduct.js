@@ -47,6 +47,7 @@ export default function CategoryProduct() {
     }
     async function fetchData() {
         let response = await axios.get(`${URL}/get_products_category_id/`, {
+            crossdomain: true ,
             params: {
                 category_id: id
             }
