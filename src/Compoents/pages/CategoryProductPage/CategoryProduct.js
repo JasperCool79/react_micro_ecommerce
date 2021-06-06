@@ -49,9 +49,10 @@ export default function CategoryProduct() {
         receivedData();
     }
     async function fetchData() {
-        window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-        window.axios.defaults.headers['crossDomain'] = true;
-        window.axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
+        axios.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest';
+        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*',
+        axios.defaults.headers.post['crossDomain'] = true;
+        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
         let response = await axios.get(`${URL}/get_products_category_id/`, {
             params: {
                 category_id: id
