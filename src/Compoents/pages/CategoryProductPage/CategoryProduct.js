@@ -6,6 +6,7 @@ import SingleProduct from '../../SingleProduct/SingleProduct'
 import { URL } from '../../api';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import 'cors-anywhere';
 var config = {
     headers: {'Access-Control-Allow-Origin': '*'}
 };
