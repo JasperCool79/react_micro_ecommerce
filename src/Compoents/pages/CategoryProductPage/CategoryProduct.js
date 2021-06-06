@@ -49,9 +49,6 @@ export default function CategoryProduct() {
         receivedData();
     }
     async function fetchData() {
-        axios.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest';
-        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*',
-        axios.defaults.headers.post['crossDomain'] = true;
         let response = await axios.get(`${URL}/get_products_category_id/`, {
             params: {
                 category_id: id
