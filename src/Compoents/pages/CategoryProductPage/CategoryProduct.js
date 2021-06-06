@@ -49,13 +49,16 @@ export default function CategoryProduct() {
         receivedData();
     }
     async function fetchData() {
-        axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
-        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-        let response = await axios.get(`${URL}/get_products_category_id/`, {
+        let response = await axios.get(`${URL}/get_products_category_id/`, {headers: {
+            'crossDomain': true,
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PATCH, PUT',
+        },
             params: {
                 category_id: id
             }
-        },config);
+        });
         const res = await response.data.data;
         return {"response": response, "data": res};
             
