@@ -2,6 +2,7 @@
   "name": "react_micro_ecommerce",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://micro-shop.herokuapp.com",
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
@@ -44,6 +45,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "https://mico-ecommerce.herokuapp.com/api"
+  }
 }

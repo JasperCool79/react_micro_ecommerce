@@ -49,12 +49,9 @@ export default function CategoryProduct() {
         receivedData();
     }
     async function fetchData() {
+        axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
+        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
         let response = await axios.get(`${URL}/get_products_category_id/`, {
-            mode: 'cors',
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
-              },
             params: {
                 category_id: id
             }
