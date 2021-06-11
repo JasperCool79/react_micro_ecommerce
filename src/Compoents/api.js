@@ -3,7 +3,7 @@ import 'cors-anywhere';
 
 // export const URL = 'https://cors-anywhere.herokuapp.com/https://mico-ecommerce.herokuapp.com/api';
 // export const URL = 'https://thingproxy.freeboard.io/fetch/https://mico-ecommerce.herokuapp.com/api';
-export const URL = 'http://alloworigin.com/get?url=https://mico-ecommerce.herokuapp.com/api';
+export const URL = 'https://yacdn.org/serve/https://mico-ecommerce.herokuapp.com/api';
 
 /****
  * RewriteCond %{HTTP:Authorization} .
